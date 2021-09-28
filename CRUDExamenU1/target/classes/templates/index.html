@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD Spring</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+<body>
+	<div class="container">
+	<br>
+    <h1>Lista de Maquinarias</h1>
+    <a th:href="@{/nuevo}" class="btn btn-primary">Nueva Maquinaria</a>
+    <table class="table table-dark table-striped">  
+        <tr>
+            <th>ID</th>
+            <th>Tipo de Maquinaria</th>
+            <th>Marca</th>
+            <th>Año de modelo</th>
+            <th>N° de Serie</th>
+            <th>Tipo de Combustible</th>
+            <th>OP</th>
+        </tr>
+        <tr th:each="maqui:${maquinarias}">   
+            <td th:text="${maqui.id}"></td>
+            <td th:text="${maqui.tipo_maquinaria}"></td>
+            <td th:text="${maqui.marca}"></td>
+            <td th:text="${maqui.modelo}"></td>
+            <td th:text="${maqui.nr_serie}"></td>
+            <td th:text="${maqui.tipo_combustible}"></td>
+            <td >
+            	<a th:href="@{/editar/}+${maqui.id}" class="btn btn-primary">Editar</a>
+            	<a th:onclick="eliminar([[${maqui.id}]])" class="btn btn-warning">Eliminar </a>
+            </td>
+        </tr>
+    </table>
+	</div>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="scripts.js"></script>
+</body>
+</html>
